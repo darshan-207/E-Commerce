@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <!-- CSS linkage -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>Nerd</h1>
+        <input type="search" placeholder="Search...." id="search">
+        <div class="navbar-links">
+            <p class="navbar-link"><a href="{{ url_for('index') }}"><span class="material-symbols-outlined">home</span></a></p>
+            <p class="navbar-link"><a href="{{ url_for('collection') }}"><span class="material-symbols-outlined">inventory_2</span></a></p>
+            <p class="navbar-link"><a href="{{ url_for('addtocart') }}"><span class="material-symbols-outlined">shopping_cart</span></a></p>
+            <p class="navbar-link"><a href="{{ url_for('myorders') }}">My Orders</a></p>
+        </div>
+    </nav>
+    <!-- Side navbar -->
+    <div class="side-navbar">
+        <p style="text-align: right; color: white" onclick="hidesidenav()">
+            <i class="fa-solid fa-xmark"></i>
+        </p>
+        <div class="sidenavbar-links">
+            <p class="sidenavbar-link"><a href="{{ url_for('index') }}">Home</a></p>
+            <p class="sidenavbar-link"><a href="{{ url_for('collection') }}">Collections</a></p>
+            <p class="sidenavbar-link"><a href="{{ url_for('addtocart') }}">Cart</a></p>
+            <p class="sidenavbar-link"><a href="{{ url_for('myorders') }}">My Orders</a></p>
+        </div>
+    </div>
+    <!-- Orders Content -->
+    <div class="container">
+        <header>
+            <div class="title">MY ORDERS</div>
+        </header>
+        <div id="orders-list">
+            <!-- Orders will be dynamically added here by the script -->
+        </div>
+    </div>
+    <!-- Service Section -->
+    <div class="bottom-nav">
+        <div>
+            <h3>Help</h3>
+            <p>
+                Track Your Order <br />Frequently Asked Questions <br />Returns
+                <br />Cancellations <br />
+                Payments <br />Customer Care <br />How Do I Redeem My Coupon
+            </p>
+        </div>
+        <div>
+            <h3>Shop By</h3>
+            <p>
+                Men <br />Women <br />Kids <br />IndieStores <br />New Arrivals
+                <br />Brand Directory <br />Home Collections
+            </p>
+        </div>
+        <div>
+            <h3>Follow Us</h3>
+            Facebook <br />Instagram <br />Twitter <br />Pinterest
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='search.js') }}"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script>
+        function loadOrders() {
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            let ordersListContainer = document.getElementById('orders-list');
+            ordersListContainer.innerHTML = '';
+            if (orders.length > 0) {
+                let ul = document.createElement('ul');
+                orders.forEach((order, index) => {
+                    let li = document.createElement('li');
+                    li.innerHTML = `
+                        <img src="${order.image}" alt="${order.name}" style="width: 100px; height: 100px;">
+                        <div class="order-details">
+                            <h4>${order.name}</h4>
+
+                            <button class="remove-button" onclick="removeOrder(${index})">Remove</button>
+                        </div>
+                    `;
+                    ul.appendChild(li);
+                });
+                ordersListContainer.appendChild(ul);
+            } else {
+                ordersListContainer.innerHTML = '<p>No orders found.</p>';
+            }
+        }
+
+        function removeOrder(index) {
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.splice(index, 1);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            loadOrders();
+        }
+
+        function showsidenav() {
+            document.querySelector(".side-navbar").style.left = "0";
+        }
+
+        function hidesidenav() {
+            document.querySelector(".side-navbar").style.left = "-60%";
+        }
+
+        window.onload = loadOrders;
+    </script>
+    <style>
+        #orders-list {
+            margin-top: 20px;
+        }
+        #orders-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #orders-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .order-details {
+            margin-left: 15px;
+        }
+        .order-details h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .order-details p {
+            margin: 5px 0;
+        }
+        .remove-button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .remove-button:hover {
+            background-color: #e60000;
+        }
+    </style>
+</body>
+</html>

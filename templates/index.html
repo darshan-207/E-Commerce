@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nerd</title>
+
+    <!-- CSS linkage -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>Nerd</h1>
+        <h2>Welcome, {{ username }}!</h2>
+        <input type="search" placeholder="Search...." id="search" aria-label="Search">
+        <div class="navbar-links">
+            <p class="navbar-link"><a href="{{ url_for('index') }}"><span class="material-symbols-outlined">home</span></a></p>
+            <p class="navbar-link"><a href="{{ url_for('collection') }}"><span class="material-symbols-outlined">inventory_2</span></a></p>
+            <p class="navbar-link"><a href="{{ url_for('addtocart') }}"><span class="material-symbols-outlined">shopping_cart</span></a></p>
+        </div>
+        <!-- Menu Toggle -->
+        <div class="navbar-menu-toggle" onclick="showsidenav()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <!-- Logout Button -->
+        {% if user_role == 'admin' %}
+            <p class="navbar-link"><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></p>
+        {% endif %}
+        <div class="navbar-logout">
+            <a href="{{ url_for('logout') }}"><button class="logout-btn">Logout</button></a>
+        </div>
+    </nav>
+
+    <!-- Side Navbar -->
+    <div class="side-navbar">
+        <p class="close-btn" onclick="hidesidenav()">
+            <i class="fa-solid fa-xmark"></i>
+        </p>
+        <div class="sidenavbar-links">
+            <p class="sidenavbar-link"><a href="{{ url_for('index') }}">Home</a></p>
+            <p class="sidenavbar-link"><a href="{{ url_for('collection') }}">Collections</a></p>
+            <p class="sidenavbar-link"><a href="{{ url_for('addtocart') }}">Cart</a></p>
+        </div>
+    </div>
+
+    <!-- Image Slider -->
+    <div class="sliderbody">
+        <div class="rad-slides">
+            <div class="img"><a href="{{ url_for('collection') }}"><img src="{{ url_for('static', filename='images/5092428.jpg') }}" alt="Collection" /></a></div>
+            <div class="img"><a href="{{ url_for('beauty') }}"><img src="{{ url_for('static', filename='images/7813642.jpg') }}" alt="Beauty" /></a></div>
+            <div class="img"><a href="{{ url_for('collection') }}"><img src="{{ url_for('static', filename='images/8852975.jpg') }}" alt="Collection" /></a></div>
+            <div class="img"><a href="{{ url_for('electronics') }}"><img src="{{ url_for('static', filename='images/10242499.jpg') }}" alt="Electronics" /></a></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div>
+            <h1>LEVEL UP YOUR LIFESTYLE</h1>
+            <p>WITH OUR STUNNING PRODUCTS</p>
+            <a href="{{ url_for('collection') }}"><button class="shpbtn">SHOP NOW</button></a>
+        </div>
+        <img src="{{ url_for('static', filename='images/header and other images/toa-heftiba-rQqabcGBsyk-unsplash.jpg') }}" width="350px" alt="Header Image" class="header-img" />
+    </div>
+
+    <!-- Best Buys -->
+    <h2 class="section-title">BEST BUYS</h2>
+    <div class="bestbuys">
+        <div class="bbcontainer">
+            <img src="{{ url_for('static', filename='images/beauty/IMG-20240711-WA0009.jpg') }}" alt="Beauty" />
+            <a href="{{ url_for('beauty') }}"><button class="shop-btn">SHOP NOW <i class="fa-solid fa-arrow-right"></i></button></a>
+        </div>
+        <div class="bbcontainer">
+            <img src="{{ url_for('static', filename='images/New folder/bag.jpg') }}" alt="Bag" />
+            <a href="{{ url_for('collection') }}"><button class="shop-btn">SHOP NOW <i class="fa-solid fa-arrow-right"></i></button></a>
+        </div>
+        <div class="bbcontainer">
+            <img src="{{ url_for('static', filename='images/New folder/minim.jpg') }}" alt="Minim" />
+            <a href="{{ url_for('beauty') }}"><button class="shop-btn">SHOP NOW <i class="fa-solid fa-arrow-right"></i></button></a>
+        </div>
+    </div>
+
+    <!-- Fashion -->
+    <h2 class="section-title">FASHION</h2>
+    <div class="fashion">
+        <div class="fscontainer">
+            <img src="{{ url_for('static', filename='images/New folder/shirt.webp') }}" alt="Shirt" />
+            <a href="{{ url_for('fashion') }}"><button class="shop-btn">SHOP NOW <i class="fa-solid fa-arrow-right"></i></button></a>
+        </div>
+        <div class="fscontainer">
+            <img src="{{ url_for('static', filename='images/New folder/4MSO4557-04-326.jpg') }}" alt="Fashion Item" />
+            <a href="{{ url_for('fashion') }}"><button class="shop-btn">SHOP NOW <i class="fa-solid fa-arrow-right"></i></button></a>
+        </div>
+        <div class="fscontainer">
+            <img src="{{ url_for('static', filename='images/New folder/IMG_0820(1).jpg') }}" alt="Fashion Item" />
+            <a href="{{ url_for('fashion') }}"><button class="shop-btn">SHOP NOW <i class="fa-solid fa-arrow-right"></i></button></a>
+        </div>
+    </div>
+
+    <!-- Electronics -->
+    <h2 class="section-title">ELECTRONICS</h2>
+    <div class="electronics">
+        <div class="etcontainer">
+            <img src="{{ url_for('static', filename='images/New folder/fridge.jpg') }}" alt="Fridge" />
+            <a href="{{ url_for('electronics') }}"><button class="shop-btn">SHOP NOW <i class="fa-solid fa-arrow-right"></i></button></a>
+        </div>
+        <div class="etcontainer">
+            <img src="{{ url_for('static', filename='images/New folder/phone.jpg') }}" alt="Phone" />
+            <a href="{{ url_for('electronics') }}"><button class="shop-btn">SHOP NOW <i class="fa-solid fa-arrow-right"></i></button></a>
+        </div>
+        <div class="etcontainer">
+            <img src="{{ url_for('static', filename='images/New folder/trim.webp') }}" alt="Electronics Item" />
+            <a href="{{ url_for('electronics') }}"><button class="shop-btn">SHOP NOW <i class="fa-solid fa-arrow-right"></i></button></a>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div>
+            <h3>Help</h3>
+            <p>Track Your Order<br />Frequently Asked Questions<br />Returns<br />Cancellations<br />Payments<br />Customer Care<br />How Do I Redeem My Coupon</p>
+        </div>
+        <div>
+            <h3>Shop by</h3>
+            <p>Men<br />Women<br />Kids<br />IndieStores<br />New Arrivals<br />Brand Directory<br />Home Collections</p>
+        </div>
+        <div>
+            <h3>Follow Us</h3>
+            <p>Facebook<br />Instagram<br />Twitter<br />Pinterest</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/indsearch.js') }}"></script>
+</body>
+</html>

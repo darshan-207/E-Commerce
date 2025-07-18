@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nerd</title>
+    <!-- CSS linkage -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>Nerd</h1>
+        <input type="search" placeholder="Search...." id="search">
+        <div class="navbar-links">
+            <p class="navbar-link"><a href="{{ url_for('index') }}"><span class="material-symbols-outlined">home</span></a></p>
+            <p class="navbar-link"><a href="{{ url_for('collection') }}"><span class="material-symbols-outlined">inventory_2</span></a></p>
+            <p class="navbar-link"><a href="{{ url_for('addtocart') }}"><span class="material-symbols-outlined">shopping_cart</span></a></p>
+        </div>
+    </nav>
+    <!-- Side Navbar -->
+    <div class="side-navbar">
+        <p style="text-align: right; color: white" onclick="hidesidenav()">
+            <i class="fa-solid fa-xmark"></i>
+        </p>
+        <div class="sidenavbar-links">
+            <p class="sidenavbar-link"><a href="{{ url_for('index') }}">Home</a></p>
+            <p class="sidenavbar-link"><a href="{{ url_for('collection') }}">Collections</a></p>
+            <p class="sidenavbar-link"><a href="{{ url_for('addtocart') }}">Cart</a></p>
+        </div>
+    </div>
+    <!-- Products -->
+    <div class="productss" style="padding-left: 20px;">
+        <div class="pcontainer">
+            <div class="products">
+                <img src="{{ url_for('static', filename='images/electronics/IMG-20240711-WA0027.jpg') }}" alt="">
+                <button class="pbutton" onclick="addToCart('iphone 14 | pink', '{{ url_for('static', filename='images/electronics/IMG-20240711-WA0027.jpg') }}')">Add To Cart<i class="fa-solid fa-arrow-right"></i></button>
+                <div><p>iphone 14 | pink</p></div>
+            </div>
+            <div class="products">
+                <img src="{{ url_for('static', filename='images/electronics/IMG-20240711-WA0028.jpg') }}" alt="">
+                <button class="pbutton" onclick="addToCart('Apple Airpods', '{{ url_for('static', filename='images/electronics/IMG-20240711-WA0028.jpg') }}')">Add To Cart<i class="fa-solid fa-arrow-right"></i></button>
+                <div><p>Apple Airpods</p></div>
+            </div>
+            <div class="products">
+                <img src="{{ url_for('static', filename='images/electronics/IMG-20240711-WA0029.jpg') }}" alt="">
+                <button class="pbutton" onclick="addToCart('Apple Airpods Max', '{{ url_for('static', filename='images/electronics/IMG-20240711-WA0029.jpg') }}')">Add To Cart<i class="fa-solid fa-arrow-right"></i></button>
+                <div><p>Apple Airpods Max</p></div>
+            </div>
+            <div class="products">
+                <img src="{{ url_for('static', filename='images/New folder/fridge.jpg') }}" alt="">
+                <button class="pbutton" onclick="addToCart('Samsung | 5 in 1 convertable Refrigerator', '{{ url_for('static', filename='images/New folder/fridge.jpg') }}')">Add To Cart<i class="fa-solid fa-arrow-right"></i></button>
+                <div style="margin-left: -80px;"><p>Samsung | 5 in 1 convertable Refrigerator</p></div>
+            </div>
+            <div class="products">
+                <img src="{{ url_for('static', filename='images/electronics/IMG-20240711-WA0030.jpg') }}" alt="">
+                <button class="pbutton" onclick="addToCart('Apple iWatch', '{{ url_for('static', filename='images/electronics/IMG-20240711-WA0030.jpg') }}')">Add To Cart<i class="fa-solid fa-arrow-right"></i></button>
+                <div><p>Apple iWatch</p></div>
+            </div>
+            <div class="products">
+                <img src="{{ url_for('static', filename='images/electronics/IMG-20240711-WA0031.jpg') }}" alt="">
+                <button class="pbutton" onclick="addToCart('MacBook | StarLight', '{{ url_for('static', filename='images/electronics/IMG-20240711-WA0031.jpg') }}')">Add To Cart<i class="fa-solid fa-arrow-right"></i></button>
+                <div><p>MacBook | StarLight</p></div>
+            </div>
+            <div class="products">
+                <img src="{{ url_for('static', filename='images/electronics/IMG-20240711-WA0032.jpg') }}" alt="">
+                <button class="pbutton" onclick="addToCart('iMac | StarLight', '{{ url_for('static', filename='images/electronics/IMG-20240711-WA0032.jpg') }}')">Add To Cart<i class="fa-solid fa-arrow-right"></i></button>
+                <div><p>iMac | StarLight</p></div>
+            </div>
+            <div class="products">
+                <img src="{{ url_for('static', filename='images/electronics/IMG-20240711-WA0033.jpg') }}" alt="">
+                <button class="pbutton" onclick="addToCart('Apple iPad', '{{ url_for('static', filename='images/electronics/IMG-20240711-WA0033.jpg') }}')">Add To Cart<i class="fa-solid fa-arrow-right"></i></button>
+                <div><p>Apple iPad</p></div>
+            </div>
+        </div>
+    </div>
+    <!-- Service Section -->
+    <div class="bottom-nav">
+        <div>
+            <h3>Help</h3>
+            <p>
+                Track Your Order <br />Frequently Asked Questions <br />Returns <br />Cancellations <br />
+                Payments <br />Customer Care <br />How Do I Redeem My Coupon
+            </p>
+        </div>
+        <div>
+            <h3>Shop By</h3>
+            <p>
+                Men <br />Women <br />Kids <br />IndieStores <br />New Arrivals <br />Brand Directory <br />Home Collections
+            </p>
+        </div>
+        <div>
+            <h3>Follow Us</h3>
+            Facebook <br />Instagram <br />Twitter <br />Pinterest
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script>
+        function addToCart(productName, productImage) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: productName, image: productImage });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} added to cart`);
+        }
+    </script>
+</body>
+</html>

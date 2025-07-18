@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nerd</title>
+  <!-- CSS linkage -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>Nerd</h1>
+    <input type="search" placeholder="Search...." id="search">
+    <div class="navbar-links">
+      <p class="navbar-link"><a href="{{ url_for('index') }}"><span class="material-symbols-outlined">home</span></a></p>
+      <p class="navbar-link"><a href="{{ url_for('collection') }}"><span class="material-symbols-outlined">inventory_2</span></a></p>
+      <p class="navbar-link"><a href="{{ url_for('addtocart') }}"><span class="material-symbols-outlined">shopping_cart</span></a></p>
+    </div>
+    <!-- Menu toggle -->
+    <div class="navbar-menu-toggle" onclick="showsidenav()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Side Navbar -->
+  <div class="side-navbar">
+    <p style="text-align: right; color: white" onclick="hidesidenav()">
+      <i class="fa-solid fa-xmark"></i>
+    </p>
+    <div class="sidenavbar-links">
+      <p class="sidenavbar-link"><a href="{{ url_for('index') }}">Home</a></p>
+      <p class="sidenavbar-link"><a href="{{ url_for('collection') }}">Collections</a></p>
+      <p class="sidenavbar-link"><a href="{{ url_for('addtocart') }}">Cart</a></p>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <div class="productss" style="padding-left: 20px;">
+    <div class="pcontainer" id="productt">
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/fashion/IMG-20240711-WA0010.jpg') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Dark Green Hoodie', '{{ url_for('static', filename='images/fashion/IMG-20240711-WA0010.jpg') }}', 1299)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Dark Green Hoodie</p>
+          <p>Price: <span>1299</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/New folder/shirt.webp') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Blue Shirt', '{{ url_for('static', filename='images/New folder/shirt.webp') }}', 999)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Blue Shirt</p>
+          <p>Price: <span>999</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/fashion/greenshoe.webp') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Green Shoe', '{{ url_for('static', filename='images/fashion/greenshoe.webp') }}', 1499)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Green Shoe</p>
+          <p>Price: <span>1499</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/fashion/IMG-20240711-WA0011.jpg') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Olive Hoodie', '{{ url_for('static', filename='images/fashion/IMG-20240711-WA0011.jpg') }}', 1399)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Olive Hoodie</p>
+          <p>Price: <span>1399</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/New folder/4MSO4557-04-326.jpg') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Beige Parachute Pant', '{{ url_for('static', filename='images/New folder/4MSO4557-04-326.jpg') }}', 1599)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Beige Parachute Pant</p>
+          <p>Price: <span>1599</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/fashion/balck shoe.webp') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Black Shoe', '{{ url_for('static', filename='images/fashion/balck shoe.webp') }}', 1799)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Black Shoe</p>
+          <p>Price: <span>1799</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/fashion/IMG-20240711-WA0014.jpg') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Grey Hoodie', '{{ url_for('static', filename='images/fashion/IMG-20240711-WA0014.jpg') }}', 1299)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Grey Hoodie</p>
+          <p>Price: <span>1299</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/fashion/IMG-20240711-WA0016.jpg') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Ash Grey Parachute Pant', '{{ url_for('static', filename='images/fashion/IMG-20240711-WA0016.jpg') }}', 1399)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Ash Grey Parachute Pant</p>
+          <p>Price: <span>1399</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/fashion/IMG-20240711-WA0019.jpg') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Blue Denim Pant', '{{ url_for('static', filename='images/fashion/IMG-20240711-WA0019.jpg') }}', 1599)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Blue Denim Pant</p>
+          <p>Price: <span>1599</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/fashion/IMG-20240711-WA0017.jpg') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Black Parachute Pant', '{{ url_for('static', filename='images/fashion/IMG-20240711-WA0017.jpg') }}', 1699)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Black Parachute Pant</p>
+          <p>Price: <span>1699</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/New folder/IMG_0820(1).jpg') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Red Shoe', '{{ url_for('static', filename='images/New folder/IMG_0820(1).jpg') }}', 1599)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Red Shoe</p>
+          <p>Price: <span>1599</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/fashion/IMG-20240711-WA0018.jpg') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Black Straight Fit Pant', '{{ url_for('static', filename='images/fashion/IMG-20240711-WA0018.jpg') }}', 1499)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Black Straight Fit Pant</p>
+          <p>Price: <span>1499</span></p>
+        </div>
+      </div>
+      <div class="products" id="product">
+        <img src="{{ url_for('static', filename='images/fashion/chunky brown.webp') }}" alt="">
+        <button class="pbutton" onclick="addToCart('Brown Chunky Shoe', '{{ url_for('static', filename='images/fashion/chunky brown.webp') }}', 1799)">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+        <div>
+          <p>Brown Chunky Shoe</p>
+          <p>Price: <span>1799</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service -->
+  <div class="bottom-nav">
+    <div>
+      <h3>Help</h3>
+      <p>
+        Track Your Order <br />Frequently Asked Questions <br />Returns <br />Cancellations <br />Payments <br />Customer Care <br />How Do I Redeem My Coupon
+      </p>
+    </div>
+    <div>
+      <h3>Shop By</h3>
+      <p>
+        Men <br />Women <br />Kids <br />IndieStores <br />New Arrivals <br />Brand Directory <br />Home Collections
+      </p>
+    </div>
+    <div>
+      <h3>Follow Us</h3>
+      <p>
+        Facebook <br />Instagram <br />Twitter <br />Pinterest
+      </p>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+  <script>
+    function addToCart(productName, productImage, productLink) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ name: productName, image: productImage, link: productLink });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} added to cart`);
+    }
+  </script>
+</body>
+</html>
+

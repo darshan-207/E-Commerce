@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nerd</title>
+    <!--css linkage-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!--navbar-->
+    <nav class="navbar">
+      <h1>Nerd</h1>
+      <input type="search" placeholder="Search...." id="search">
+      <div class="navbar-links">
+        <p class="navbar-link"><a href="{{ url_for('index') }}"><span class="material-symbols-outlined">home</span></a></p>
+        <p class="navbar-link"><a href="{{ url_for('collection') }}"><span class="material-symbols-outlined">inventory_2</span></a></p>
+        <p class="navbar-link"><a href="{{ url_for('addtocart') }}"><span class="material-symbols-outlined">shopping_cart</span></a></p>
+      </div>
+    </nav>
+    <!--side navbar-->
+    <div class="side-navbar">
+      <p style="text-align: right; color: white" onclick="hidesidenav()">
+        <i class="fa-solid fa-xmark"></i>
+      </p>
+      <div class="sidenavbar-links">
+        <p class="sidenavbar-link"><a href="{{ url_for('index') }}">Home</a></p>
+        <p class="sidenavbar-link"><a href="{{ url_for('collection') }}">Collections</a></p>
+        <p class="sidenavbar-link"><a href="{{ url_for('addtocart') }}">Cart</a></p>
+      </div>
+    </div>
+    <!--products-->
+    <div class="productss" style="padding-left: 20px;">
+      <div class="pcontainer" id="productt">
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/beauty/IMG-20240711-WA0001.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Mud Veil Clay Mask', '{{ url_for('static', filename='images/beauty/IMG-20240711-WA0001.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div>
+            <p>Mud Veil Clay Mask</p>
+          </div>
+        </div>
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/beauty/IMG-20240711-WA0002.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Vitamin C Polishing Wash', '{{ url_for('static', filename='images/beauty/IMG-20240711-WA0002.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div><p>Vitamin C Polishing Wash</p></div>
+        </div>
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/beauty/IMG-20240711-WA0003.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Face Cream', '{{ url_for('static', filename='images/beauty/IMG-20240711-WA0003.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div><p>Face Cream</p></div>
+        </div>
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/beauty/IMG-20240711-WA0004.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Anti-Aging Face Oil', '{{ url_for('static', filename='images/beauty/IMG-20240711-WA0004.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div><p>Anti-Aging Face Oil</p></div>
+        </div>
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/beauty/IMG-20240711-WA0005.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Rose Face Cream', '{{ url_for('static', filename='images/beauty/IMG-20240711-WA0005.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div><p>Rose Face Cream</p></div>
+        </div>
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/beauty/IMG-20240711-WA0006.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Ascorbic Acid Serum', '{{ url_for('static', filename='images/beauty/IMG-20240711-WA0006.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div><p>Ascorbic Acid Serum</p></div>
+        </div>
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/beauty/IMG-20240711-WA0007.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Mocha Body Polish', '{{ url_for('static', filename='images/beauty/IMG-20240711-WA0007.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div><p>Mocha Body Polish</p></div>
+        </div>
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/beauty/IMG-20240711-WA0008.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Oil-Free Gel Face Cream', '{{ url_for('static', filename='images/beauty/IMG-20240711-WA0008.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div><p>Oil-Free Gel Face Cream</p></div>
+        </div>
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/beauty/IMG-20240711-WA0009.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Hand Cream for Dry Skin', '{{ url_for('static', filename='images/beauty/IMG-20240711-WA0009.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div><p>Hand Cream for Dry Skin</p></div>
+        </div>
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/fashion/IMG-20240711-WA0020.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Coffee Scrub', '{{ url_for('static', filename='images/fashion/IMG-20240711-WA0020.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div><p>Coffee Scrub</p></div>
+        </div>
+        <div class="products" id="product">
+          <img src="{{ url_for('static', filename='images/fashion/IMG-20240711-WA0021.jpg') }}" alt="">
+          <button class="pbutton" onclick="addToCart('Haluronic Acid Serum', '{{ url_for('static', filename='images/fashion/IMG-20240711-WA0021.jpg') }}')">Add To Cart <i class="fa-solid fa-arrow-right"></i></button>
+          <div><p>Haluronic Acid Serum</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!--service-->
+    <div class="bottom-nav">
+      <div>
+        <h3>Help</h3>
+        <p>
+          Track Your Order <br />Frequently Asked Questions <br />Returns
+          <br />Cancellations <br />
+          Payments <br />Customer Care <br />How Do I Redeem My Coupon
+        </p>
+      </div>
+      <div>
+        <h3>Shop By</h3>
+        <p>
+          Men <br />Women <br />Kids <br />IndieStores <br />New Arrivals
+          <br />Brand Directory <br />Home Collections
+        </p>
+      </div>
+      <div>
+        <h3>Follow Us</h3>
+        Facebook <br />Instagram <br />Twitter <br />Pinterest
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='search.js') }}"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script>
+      function addToCart(name, image) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name, image });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(name + ' has been added to the cart.');
+      }      
+    </script>
+  </body>
+</html>

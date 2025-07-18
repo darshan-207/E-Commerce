@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Include any additional styles or scripts you need -->
+</head>
+<body>
+    <nav class="navbar">
+      <h1>Admin Dashboard</h1>
+      <input type="search" placeholder="Search...." id="search">
+      <div class="navbar-links">
+        <p class="navbar-link"><a href="{{ url_for('index') }}">Home</a></p>
+        <p class="navbar-link"><a href="{{ url_for('collection') }}">Collections</a></p>
+        <p class="navbar-link"><a href="{{ url_for('addtocart') }}">Cart</a></p>
+        <p class="navbar-link"><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></p>
+      </div>
+      <!-- Menu toggle -->
+      <div class="navbar-menu-toggle" onclick="showsidenav()">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+
+    <!-- Content for Admin Dashboard -->
+    <div class="dashboard-content">
+        <h2>Welcome, Admin!</h2>
+        <p>Manage users, view reports, and access administrative tools here.</p>
+        <!-- Add more dashboard-specific content here -->
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+      <div>
+        <h3>Help</h3>
+        <p>Track Your Order <br />Frequently Asked Questions <br />Returns <br />Cancellations <br />Payments <br />Customer Care <br />How Do I Redeem My Coupon</p>
+      </div>
+      <div>
+        <h3>Shop by</h3>
+        <p>Men <br />Women <br />Kids <br />IndieStores <br />New Arrivals <br />Brand Directory <br />Home Collections</p>
+      </div>
+      <div>
+        <h3>Follow us</h3>
+        <p>Facebook <br />Instagram <br />Twitter <br />Pinterest</p>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/indsearch.js') }}"></script>
+</body>
+</html>

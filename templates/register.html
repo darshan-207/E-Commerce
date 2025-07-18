@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        /* Register Page Styles */
+
+        /* Reset some default browser styles */
+        body, h2, label, input, select, button {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Open Sans', sans-serif;
+          background-color: #e7e7da;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .box-form {
+          width: 100%;
+          max-width: 450px;
+          background-color: #fff;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .register-container {
+          background: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .register-container h2 {
+          margin-bottom: 20px;
+          font-size: 1.5rem;
+          color: #333;
+        }
+
+        .mb-3 {
+          margin-bottom: 1rem;
+        }
+
+        .form-label {
+          display: block;
+          font-size: 0.875rem;
+          color: #555;
+          margin-bottom: 5px;
+        }
+
+        .form-control {
+          width: 100%;
+          padding: 10px;
+          font-size: 1rem;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          background-color: #fafafa;
+        }
+
+        .form-control:focus {
+          border-color: #007bff;
+          outline: none;
+          background-color: #fff;
+        }
+
+        .btn {
+          display: inline-block;
+          font-size: 1rem;
+          font-weight: 700;
+          text-align: center;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          text-decoration: none;
+          transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary {
+          background-color: #007bff;
+          color: #fff;
+        }
+
+        .btn-primary:hover {
+          background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-form">
+        <div class="register-container">
+            <h2>Register</h2>
+            <form id="register-form">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">Role:</label>
+                    <select id="role" name="role" class="form-control">
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address:</label>
+                    <input type="text" id="address" name="address" class="form-control" placeholder="Street Address" required>
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City:</label>
+                    <input type="text" id="city" name="city" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="state" class="form-label">State:</label>
+                    <input type="text" id="state" name="state" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="zip" class="form-label">ZIP Code:</label>
+                    <input type="text" id="zip" name="zip" class="form-control" required>
+                </div>
+                <input type="submit" value="Register" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return false;
+            }
+            // If passwords match, redirect to login page
+            window.location.href = '/login'; // Adjust the URL as needed
+            return true;
+        });
+    </script>
+</body>
+</html>
